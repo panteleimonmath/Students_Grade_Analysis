@@ -35,6 +35,14 @@ sfs1.fit(X.drop(["G2","G1"], axis = 1),y)
 
 sfs1.k_feature_names_
 
+print(pd.DataFrame.from_dict(sfs1.get_metric_dict()).T)
+
+pd.DataFrame.from_dict(sfs1.get_metric_dict()).T.reset_index().avg_score
+
+idx = pd.DataFrame.from_dict(sfs1.get_metric_dict()).T.iloc[16,:].feature_names
+
+model_ols_red = sm.OLS(y, X.loc[:,idx], axis = 1).fit()
+print(model_ols_red.summary())
 
 #cl = ['age','failures']
 
