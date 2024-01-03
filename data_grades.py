@@ -44,7 +44,7 @@ for col in X.columns :
         X[col] = X[col].factorize()[0]
 
 
-pca = PCA(n_components= 30)
+pca = PCA(n_components=47)
 dfpca = pca.fit_transform(X)
 dfpca = pd.DataFrame(dfpca)
 dfpca = sm.add_constant(dfpca)
@@ -81,7 +81,7 @@ best_cols = pd.Series(best_cols).astype(str)
 model_ols_bckw_elim = sm.OLS(df.G3_x, dfpca[best_cols]).fit()
 print(model_ols_bckw_elim.summary())
 
-f_regression(dfpca, df.G3_x)
+#f_regression(dfpca, df.G3_x)
 
 
 model = feature_selection.SelectKBest(score_func=feature_selection.f_regression)
@@ -97,7 +97,8 @@ print(model_ols_red.summary())
 #cl = ['age','failures']
 
 
-model_ols = sm.OLS(y, X).fit()
+model_ols = sm.OLS(df.G3_x, dfpca).fit()
+print(model_ols.summary())
 
 anova_res = anova_lm(model_ols_red, model_ols)
 print(anova_res)
