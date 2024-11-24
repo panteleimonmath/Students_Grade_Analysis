@@ -34,3 +34,5 @@ summary(modely)
 step.modelx <- stepAIC(modelx, direction = "both", trace = FALSE)
 step.modely <- stepAIC(modely, direction = "both", trace = FALSE)
 summary(step.modely)
+
+# his work
