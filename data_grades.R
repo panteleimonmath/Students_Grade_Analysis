@@ -7,18 +7,18 @@ dfpor <- read.csv("C:\\Users\\mathe\\Documents\\Students_Grade_Analysis\\student
 
 
 
-df <- merge(dfmath,dfpor,by=c("school","sex","age","address","famsize","Pstatus","Medu","Fedu","Mjob","Fjob","reason","nursery","internet"))
+df <- merge(dfmath, dfpor, by = c("school", "sex", "age", "address", "famsize", "Pstatus", "Medu", "Fedu", "Mjob", "Fjob", "reason", "nursery", "internet"))
 colnames(df)
 g3x <- df$G3.x
 g3y <- df$G3.y
 
-df <- df[,!colnames(df) %in% c('G1.x','G2.x','G1.y','G2.y','G3.y','G3.x')]
-cols <- names(sapply(df, class) == 'factor')
+df <- df[, !colnames(df) %in% c("G1.x", "G2.x", "G1.y", "G2.y", "G3.y", "G3.x")]
+cols <- names(sapply(df, class) == "factor")
 
 
-for (i in 1:length(cols)){
+for (i in 1:length(cols)) {
   col_num <- cols[i]
-  df[,col_num] <- as.numeric(df[,col_num])
+  df[, col_num] <- as.numeric(df[, col_num])
 }
 
 
